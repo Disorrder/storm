@@ -99,7 +99,38 @@ export function WIP_computed(target, name, descriptor) {
 }
 
 
-// Creates new Store without decorators
-export function WIP_createStore({state, mutations, actions}) {
-    console.warn("createStore factory is not implemented")
+// Creates new Store class without decorators
+export function createStore(options) {
+    class StoreModule extends Store {
+        constructor() {
+            super();
+            if (options.constructor) options.constructor.call(this);
+        }
+    }
+
+    for (let k in options.state) {
+        state(StoreModule.prototype, k, {
+            enumerable: true,
+            configurable: true,
+            initializer() { return options.state[k]; },
+        });
+    }
+
+    for (let k in options.mutations) {
+        Mutation(StoreModule.prototype, k, {
+            enumerable: true,
+            configurable: true,
+            value: options.mutations[k],
+        });
+    }
+
+    for (let k in options.actions) {
+        Action(StoreModule.prototype, k, {
+            enumerable: true,
+            configurable: true,
+            value: options.actions[k],
+        });
+    }
+
+    return StoreModule;
 }
