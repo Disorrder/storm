@@ -1,6 +1,8 @@
 import EE from "events";
 // import isEqual from "./isEqual";
 
+export const version = VERSION; 
+
 const STATE = Symbol("state");
 
 export class Store extends EE {
