@@ -1,8 +1,8 @@
 {
   "name": "storm",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Redux for OOP",
-  "main": "src/index.js",
+  "main": "build/storm.js",
   "module": "src/index.js",
   "scripts": {
     "build": "webpack",
