@@ -4,6 +4,7 @@ import EE from "events";
 export const version = VERSION; 
 
 const STATE = Symbol("state");
+const SUBS = Symbol("subscriptions");
 
 export class Store extends EE {
     static state = {}
@@ -13,6 +14,7 @@ export class Store extends EE {
     constructor() {
         super();
         this[STATE] = {};
+        this[SUBS] = [];
 
         // Initialize state
         const Class = this.constructor;
@@ -46,6 +48,18 @@ export class Store extends EE {
     isEqual(oldVal, newVal) {
         return oldVal === newVal;
         // return isEqual(oldVal, newVal);
+    }
+
+    WIP_subscribe(cb) {
+        this[SUBS].push(cb);
+    }
+    
+    WIP_unsubscribe(cb) {
+        this[SUBS].splice(this[SUBS].indexOf(cb), 1);
+    }
+
+    WIP_unsubscribeAll() {
+        this[SUBS].length = 0;
     }
 }
 

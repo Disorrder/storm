@@ -1,8 +1,10 @@
-import {Store, state, Mutation, Action} from "../../src";
+import {Store, state, Mutation, Action} from "../../../build/storm";
+// import {Store, state, Mutation, Action} from "../../../src";
+import api from "../api";
 
 export default class Collection extends Store {
     url = "/"
-    pk = "_id" // Primary key
+    pk = "id" // Primary key
 
     @state itemIds = [] // ordered list
     @state items = {}
@@ -29,8 +31,7 @@ export default class Collection extends Store {
     }
     
     @Action async create(data) {
-        // let {item: data} = await api.post(`${}`, data)
-        let item = {_id: 123, ...data};
+        let item = await api.post(this.url, data);
         this.add(item);
     }
 }
