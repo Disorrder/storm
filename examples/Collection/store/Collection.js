@@ -1,5 +1,4 @@
 import {Store, state, Mutation, Action} from "../../../build/storm";
-// import {Store, state, Mutation, Action} from "../../../src";
 import api from "../api";
 
 export default class Collection extends Store {

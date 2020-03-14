@@ -1,4 +1,3 @@
-import EE from "events";
 // import isEqual from "./isEqual";
 
 export const version = VERSION; 
@@ -6,13 +5,12 @@ export const version = VERSION;
 const STATE = Symbol("state");
 const SUBS = Symbol("subscriptions");
 
-export class Store extends EE {
+export class Store {
     static state = {}
     static mutations = {}
     static actions = {}
 
     constructor() {
-        super();
         this[STATE] = {};
         this[SUBS] = [];
 
@@ -41,7 +39,7 @@ export class Store extends EE {
                 ...oldState,
                 ...mutation
             };
-            this.emit("change", mutation, oldState);
+            this[SUBS].forEach(cb => cb(mutation, oldState));
         }
     }
 
@@ -50,15 +48,17 @@ export class Store extends EE {
         // return isEqual(oldVal, newVal);
     }
 
-    WIP_subscribe(cb) {
+    DEBUG_getState() { return this[STATE]; }
+
+    subscribe(cb) {
         this[SUBS].push(cb);
     }
     
-    WIP_unsubscribe(cb) {
+    unsubscribe(cb) {
         this[SUBS].splice(this[SUBS].indexOf(cb), 1);
     }
 
-    WIP_unsubscribeAll() {
+    unsubscribeAll() {
         this[SUBS].length = 0;
     }
 }
@@ -71,12 +71,10 @@ export function state(target, name, descriptor) {
     delete descriptor.initializer;
     
     descriptor.get = function() {
-        console.log("Getter of", name)
         return this[STATE][name];
     };
 
     descriptor.set = function(val) {
-        console.log("Setter of", name)
         this.mutate({[name]: val});
     };
 
