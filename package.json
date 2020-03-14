@@ -1,6 +1,6 @@
 {
   "name": "@disorrder/storm",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "StoreModule. Trying to combine Redux and OOP",
   "main": "build/storm.js",
   "module": "build/index.js",
