@@ -3,9 +3,11 @@
   "version": "0.2.0",
   "description": "StoreModule. Trying to combine Redux and OOP",
   "main": "build/storm.js",
+  "typings": "build/index.d.ts",
   "module": "build/index.js",
   "scripts": {
-    "build": "webpack && npm test",
+    "build-wp": "webpack && npm test",
+    "build": "tsc",
     "test": "jest"
   },
   "repository": {
@@ -29,7 +31,6 @@
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/preset-env": "^7.8.7",
-    "babel-loader": "^8.0.6",
     "jest": "^25.1.0",
     "ts-loader": "^7.0.0",
     "typescript": "^3.8.3",

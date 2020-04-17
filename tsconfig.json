@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "outDir": "./build/",
+        "target": "es2015",
+        "module": "umd",
+        "moduleResolution": "node",
+        "declaration": true,
+        // "strict": true,
+        "experimentalDecorators": true,
+    },
+    "include": ["src"]
+}

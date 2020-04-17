@@ -5,7 +5,7 @@ module.exports = {
     mode: "development",
     context: path.resolve(__dirname, "./src"),
     entry: {
-        storm: "./index.js"
+        storm: "./index.ts"
     },
     output: {
         path: path.resolve(__dirname, "./build"),
@@ -15,7 +15,7 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+            { test: /\.ts$/, exclude: /node_modules/, loader: "ts-loader" },
         ]
     },
     plugins: [

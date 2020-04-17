@@ -34,7 +34,7 @@ class Api {
     }
     
     // Update
-    async put(url, {id, ...data}) {
+    async put(url, {...data}) {
         let [name, id] = url.split("/")
         let collection = this._getCollection(name);
         let item = collection.find((item) => item.id == id);
@@ -43,7 +43,7 @@ class Api {
     }
     
     // Delete
-    async delete(url, {id}) {
+    async delete(url, {}) {
         let [name, id] = url.split("/")
         let collection = this._getCollection(name);
         collection = collection.filter((item) => item.id != id);
