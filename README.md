@@ -80,3 +80,13 @@ account.subscribe((mutation, oldState) => {
 ```
 
 ## Inheritance
+
+import user from "./store";
+
+class App extends Component {
+    componentDidMount() {
+        user.subscribe(() => {
+            this.setState({});
+        });
+    }
+}
