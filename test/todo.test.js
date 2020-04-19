@@ -1,4 +1,4 @@
-import {Store, state, Mutation, Action} from "..";
+import {Store, SingleStore, state, Mutation, Action} from "..";
 
 class TodoList extends Store {
     @state tasks = {}
@@ -37,10 +37,20 @@ class TodoList extends Store {
     }
 }
 
-test("", () => {
+test("Todo list", () => {
     const todo = new TodoList();
     expect(todo.tasks).toEqual({});
     
     todo.create({title: "Task 0"});
     expect(todo.tasks[0].title).toEqual("Task 0");
+});
+
+test("Singletone", () => {
+    class Single extends SingleStore {}
+
+    // const single = Single.getInstance() as Single; // TS syntax
+    const a = Single.getInstance();
+    const b = Single.getInstance();
+
+    expect(a).toEqual(b);    
 });

@@ -71,6 +71,17 @@ export class Store {
     }
 }
 
+export class SingleStore extends Store {
+    protected static instance: SingleStore;
+    public static getInstance(): SingleStore {
+        if (this.instance) return this.instance;
+        return this.instance = new this();
+    }
+    protected constructor() {
+        super();
+    }
+}
+
 // Decorators
 // Proposal legacy type
 interface PropertyDescriptor {

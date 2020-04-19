@@ -20,6 +20,11 @@ export declare class Store {
     unsubscribe(cb: Subscription): void;
     unsubscribeAll(): void;
 }
+export declare class SingleStore extends Store {
+    protected static instance: SingleStore;
+    static getInstance(): SingleStore;
+    protected constructor();
+}
 interface PropertyDescriptor {
     initializer?: any;
     configurable?: boolean;
