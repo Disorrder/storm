@@ -1,4 +1,4 @@
-export declare const VERSION = "0.3.0";
+export declare const VERSION = "0.3.1";
 interface IState {
     [key: string]: any;
 }

@@ -1,6 +1,6 @@
 // import isEqual from "./isEqual";
 
-export const VERSION = "0.3.0";
+export const VERSION = "0.3.1";
 // export const __rev = `${VERSION} ${BRANCH} ${REVISION} ${BUILD_DATE}`;
 
 interface IState {
