@@ -27,7 +27,8 @@ export class Store {
         // Initialize state
         const Class = this.constructor as any;
         for (let k in Class.state) {
-            this[STATE][k] = Class.state[k]();
+            const val = Class.state[k];
+            this[STATE][k] = typeof val === "function" ? val() : val;
         }
     }
 
