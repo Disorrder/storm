@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: "development",
@@ -15,10 +16,16 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.ts$/, exclude: /node_modules/, loader: "ts-loader" },
+            {
+                test: /\.ts$/, exclude: /node_modules/, loader: "ts-loader",
+                options: {
+                    configFile: "tsconfig.build.json",
+                },
+            },
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new webpack.DefinePlugin({
             VERSION: JSON.stringify( require("./package.json").version ),
             REVISION: JSON.stringify( require("child_process").execSync('git rev-parse --short HEAD').toString().trim() ),

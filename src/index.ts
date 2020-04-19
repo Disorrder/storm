@@ -26,7 +26,6 @@ export class Store {
     constructor() {
         // Initialize state
         const Class = this.constructor as any;
-        console.log("Store constr", Class, Class.state)
         for (let k in Class.state) {
             this[STATE][k] = Class.state[k]();
         }

@@ -4,9 +4,9 @@
         "target": "es2015",
         "module": "umd",
         "moduleResolution": "node",
-        "declaration": true,
         // "strict": true,
-        "experimentalDecorators": true,
+        "allowJs": true,
+        "experimentalDecorators": true
     },
-    "include": ["src"]
+    "include": ["src", "test", "examples"]
 }
